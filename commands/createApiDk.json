@@ -1,0 +1,57 @@
+{
+  "_id": "sytexZp9D00aq1Ph475KXJOgkiJyNnvA",
+  "apis": null,
+  "name": "Approximative translation",
+  "tags": [],
+  "team": "Ihfi3tVM6v9vG1G1PUMrYIulae2ROmub",
+  "image": null,
+  "posts": [],
+  "stars": 0,
+  "state": "published",
+  "header": null,
+  "issues": [],
+  "parent": null,
+  "_tenant": "default",
+  "swagger": {
+    "url": "/assets/swaggers/petstore.json",
+    "content": "openapi: 3.0.3\ninfo:\n  title: Approximative translation - OpenAPI\n  description: |-\n    This is a sample API for DTC IX.\n    It's a useful API to translate a family name from french to english\n  contact:\n    email: admin@komainu.io\n  license:\n    name: Apache 2.0\n    url: http://www.apache.org/licenses/LICENSE-2.0.html\n  version: 1.0.11\ntags:\n  - name: translate\n    description: family name translation\npaths:\n  /translate:\n    post:\n      tags:\n        - translate\n      summary: translate family name\n      description: translate from french to approximative english\n      operationId: translate\n      requestBody:\n        description: translation input\n        content:\n          application/json:\n            schema:\n              $ref: '#/components/schemas/TranslationInput'\n        required: true\n      responses:\n        '200':\n          description: Successful operation\n          content:\n            application/json:\n              schema:\n                $ref: '#/components/schemas/TranslationOutput' \n        '404':\n          description: trabslation error\n          content:\n            application/json:\n              schema:\n                $ref: '#/components/schemas/TranslationOutputError' \n                \n        '401':\n          description: Unauthorized\n          content:\n            application/json:\n              schema:\n                $ref: '#/components/schemas/UnauthorizedError' \n  \ncomponents:\n  schemas:\n    TranslationInput:\n      type: object\n      properties:\n        text:\n          type: string\n          example: foufou\n    TranslationOutput:\n      type: array\n      items:\n        type: string\n        example: \"fool idiot\"\n    TranslationOutputError:\n      type: object\n      properties:\n        error:\n          type: string\n          example: \"nothing found, sorry\"\n    UnauthorizedError:\n      type: object\n      properties:\n        error:\n          type: string\n          example: \"unauthorized\"\n    \n  securitySchemes:\n    api_key:\n      type: apiKey\n      name: api_key\n      in: header",
+    "headers": {},
+    "additionalConf": null
+  },
+  "testing": {
+    "auth": "Basic",
+    "name": null,
+    "config": null,
+    "enabled": false,
+    "password": null,
+    "username": null
+  },
+  "_deleted": false,
+  "isDefault": true,
+  "categories": [],
+  "issuesTags": [],
+  "lastUpdate": 1705075140587,
+  "visibility": "Public",
+  "description": "# La Révolution de l'API de Traduction de Noms de Famille : Un Pont Linguistique entre la France et l'Angleterre\n\nPlongeons dans le monde innovant de notre API révolutionnaire de traduction de noms de famille. \nConçue pour surmonter les barrières linguistiques qui peuvent souvent accompagner les noms de famille français et anglais, \ncette API repousse les limites de la traduction en se basant exclusivement sur la phonétique.\n\n## Le Pouvoir de la Phonétique\n\nAu cœur de notre API réside une approche audacieuse qui utilise la phonétique pour décoder et traduire les noms de famille. \nEn analysant les sons plutôt que les orthographes exactes, \nnotre technologie offre une solution dynamique pour rendre les noms de famille compréhensibles des deux côtés de la Manche.\n\n## Comment ça marche ?\n\nNotre API divise les noms en mots existants, \nutilise des algorithmes avancés pour interpréter la phonétique, \npuis traduit ces mots pour créer une version approximative en anglais. \nCette approche novatrice garantit que la traduction résultante conserve l'essence sonore du nom d'origine \ntout en s'adaptant de manière harmonieuse à la structure linguistique anglaise.\n\n## La Magie des Mots\n\nImaginez un monde où les noms de famille ne sont plus des obstacles linguistiques, \nmais des liens culturels. \nDécouvrez comment notre API peut transformer \"Dupont\" en une version anglaise tout en préservant \nla richesse et la sonorité qui font de chaque nom une pièce unique de l'identité familiale.\n> \"Dupont\" deviendra alors \"Of the bridge\"\n\n## Applications Infinies\n\nQue vous travailliez dans la généalogie, les services publics, \nou simplement dans un contexte où la communication transculturelle est essentielle, \nnotre API offre des possibilités infinies. \nExplorez comment cette technologie peut révolutionner la manière dont nous percevons et \ncomprenons les noms de famille dans un monde de plus en plus connecté.\n\n## Conclusion\n\nNotre API de traduction de noms de famille ouvre une fenêtre sur l'avenir de la communication interculturelle. \nEn unissant la puissance de la phonétique et de l'informatique, \nelle offre une passerelle fluide entre les langues, renforçant ainsi les liens familiaux et culturels. \nRejoignez-nous dans cette aventure linguistique et découvrez comment les noms de famille peuvent devenir des ambassadeurs de la diversité linguistique.",
+  "documentation": {
+    "_id": "SyUf9Gj4wr18bkW9JUnoBEuTveyWZLkT",
+    "pages": [
+      {
+        "id": "a8q5qbVSRIN4qMwI7n8JqQH112TIJ40j",
+        "title": "Usage",
+        "children": []
+      }
+    ],
+    "_tenant": "default",
+    "lastModificationAt": 1705075140588
+  },
+  "currentVersion": "1.0.0",
+  "authorizedTeams": [],
+  "_humanReadableId": "approximative-translation",
+  "defaultUsagePlan": "default",
+  "smallDescription": "vous rever de traduire approximativement votre nom de famille ?",
+  "supportedVersions": [],
+  "possibleUsagePlans": [
+		
+  ]
+}

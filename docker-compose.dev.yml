@@ -24,46 +24,23 @@ services:
 #    command: redis-server --appendonly yes
 #    volumes:
 #      - ./config/redis-data:/data
-#  s3server:
-#    image: scality/s3server
-#    expose:
-#      - 8000
-#    environment:
-#      - SCALITY_ACCESS_KEY_ID=access
-#      - SCALITY_SECRET_ACCESS_KEY=secret
-#      - LOG_LEVEL=trace
-#      - ENDPOINT=s3server
-#    volumes:
+
+
+  s3server:
+    image: scality/s3server
+    expose:
+      - 8000
+    environment:
+      - SCALITY_ACCESS_KEY_ID=access
+      - SCALITY_SECRET_ACCESS_KEY=secret
+      - LOG_LEVEL=trace
+      - ENDPOINT=s3server
+  #    volumes:
 #      - ./config/s3-data/s3-data:/usr/src/app/localData
 #      - ./config/s3-data/s3-metadata:/usr/src/app/localMetadata
-#  api-prod:
-#    image: node
-#    networks:
-#      - basicsetup
-#    environment:
-#      - ENV=prod
-#    expose:
-#      - 3000
-#    ports:
-#      - 3003:3000
-#    volumes:
-#      - ./api:/
-#    command: npm install -g nodemon && npm install && npm start
-  api-dev:
-    image: node
-    networks:
-      - basicsetup
-    environment:
-      - ENV=dev
-    expose:
-      - 3000
-    ports:
-      - 3002:3000
-    volumes:
-      - ./api:/api
-    command: bash -c "npm ci --prefix ./api && npm start --prefix ./api"
+
   daikoku:
-    image: maif/daikoku:latest
+    image: maif/daikoku:17.0.0
     networks:
       - basicsetup
     environment:
@@ -81,7 +58,11 @@ services:
 #      - ./config/daikoku.ndjson:/daikoku.ndjson:ro
     depends_on:
       - postgres
-##      - s3server
+      - s3server
+
+      # izanami
+
+
 #  kibana:
 #    image: docker.elastic.co/kibana/kibana:6.8.4
 #    environment:
@@ -110,8 +91,9 @@ services:
       - ./config/es-data:/usr/share/elasticsearch/data
     expose:
       - 9200
+
   otoroshi:
-    image: maif/otoroshi
+    image: maif/otoroshi:16.12.0
     networks:
       - basicsetup
     environment:
@@ -129,10 +111,8 @@ services:
       - 8080
     depends_on:
       - redis
-#      - daikoku
+      - daikoku
       - elastic
-      - api-dev
-#      - api-prod
   nginx:
     image: nginx
     networks:
